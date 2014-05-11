@@ -1,0 +1,60 @@
+<head>
+    <title>Meteor app</title>
+</head>
+<body>
+{{> mainManagerTempl}}
+</body>
+<template name="mainManagerTempl">
+    <div class="container">
+        <div class="page-header">
+            <h1>Manager</h1>
+        </div>
+        {{> yield region="breadCrumbs"}}
+
+        {{> yield}}
+
+        <div class="panel-footer">Made proudly by <a href="http://danat.dk/" target="_blank">Lusia </a><span
+                class="glyphicon glyphicon-heart"></span></div>
+    </div>
+</template>
+<template name="firstView">
+    <div class="well well-sm">
+        <div class="list-group">
+            <a href="#" class="list-group-item">Manager Dashboard</a>
+            <a href="{{pathFor 'mealsListView'}}" class="list-group-item">Meals List</a>
+        </div>
+    </div>
+</template>
+<template name="mealsListView">
+    <button type="button" class="btn btn-default">Add new meal</button>
+    <div class="well well-sm">
+        <table class="table">
+            <tr>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Calories</th>
+                <th>Actions</th>
+            </tr>
+            {{#each doc}}
+            <tr>
+                <th colspan="4">{{category}}</th>
+            </tr>
+            {{#each meals}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{calories}}</td>
+                <td>{{price}}</td>
+                <td><a href="#" class="btn btn-default">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {{/each}}
+            {{/each}}
+        </table>
+    </div>
+</template>
+<template name="breadCrumbs">
+    <ol class="breadcrumb">
+        <li><a href="{{pathFor 'firstView'}}">Home</a></li>
+        <li class="{{class_active}}">{{views_name}}</li>
+    </ol>
+</template>
+
