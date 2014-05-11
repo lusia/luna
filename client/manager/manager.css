@@ -1,0 +1,8 @@
+#tableWithMeals {
+    border-collapse: separate;
+    border-spacing: 8px;
+}
+
+#addMeal {
+    margin-bottom: 20px;
+}

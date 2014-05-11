@@ -26,9 +26,9 @@
     </div>
 </template>
 <template name="mealsListView">
-    <button type="button" class="btn btn-default">Add new meal</button>
+    <button type="button" id="addMeal" class="btn btn-primary">Add new meal</button><br>
     <div class="well well-sm">
-        <table class="table">
+        <table id="tableWithMeals" class="table">
             <tr>
                 <th>Category</th>
                 <th>Price</th>
@@ -44,7 +44,7 @@
                 <td>{{name}}</td>
                 <td>{{calories}}</td>
                 <td>{{price}}</td>
-                <td><a href="#" class="btn btn-default">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+                <td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
             </tr>
             {{/each}}
             {{/each}}
