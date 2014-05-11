@@ -9,7 +9,7 @@
         <div class="page-header">
             <h1>Manager</h1>
         </div>
-        {{> yield region="breadCrumbs"}}
+        <!--{{> yield region="breadCrumbs"}}-->
 
         {{> yield}}
 
@@ -18,15 +18,21 @@
     </div>
 </template>
 <template name="firstView">
-    <div class="well well-sm">
-        <div class="list-group">
-            <a href="#" class="list-group-item">Manager Dashboard</a>
-            <a href="{{pathFor 'mealsListView'}}" class="list-group-item">Meals List</a>
-        </div>
+
+    <div class="list-group">
+        <a href="#" class="list-group-item">Manager Dashboard</a>
+        <a href="{{pathFor 'mealsListView'}}" class="list-group-item">Meals List</a>
     </div>
+
 </template>
 <template name="mealsListView">
-    <button type="button" id="addMeal" class="btn btn-primary">Add new meal</button><br>
+    <ol class="breadcrumb">
+        <li><a href="{{pathFor 'firstView'}}">Home</a></li>
+        <li class="active">Meals List</li>
+    </ol>
+
+    <a id="addMeal" class="btn btn-primary" href="{{pathFor 'addMealForm'}}">Add new meal</a><br>
+
     <div class="well well-sm">
         <table id="tableWithMeals" class="table">
             <tr>
@@ -51,10 +57,45 @@
         </table>
     </div>
 </template>
-<template name="breadCrumbs">
+<template name="addMealForm">
     <ol class="breadcrumb">
         <li><a href="{{pathFor 'firstView'}}">Home</a></li>
-        <li class="{{class_active}}">{{views_name}}</li>
+        <li><a href="{{pathFor 'mealsListView'}}">Meals List</a></li>
+        <li class="active">Add Meal</li>
     </ol>
+    <div class="well well-sm">
+        <h2>Add New Meal</h2>
+
+        <form role="form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name of the meal">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" placeholder="Price">
+            </div>
+            <div class="form-group">
+                <label for="calories">Calories</label>
+                <input type="number" class="form-control" id="calories" placeholder="Calories">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <button id="addCategory" type="button" class="btn btn-success">Add new category</button>
+                <select id="category" class="form-control">
+                    {{#each categories}}
+                    <option>{{category}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button id="submitNewMeal" type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
 </template>
+<!--<template name="breadCrumbs">-->
+<!--<ol class="breadcrumb">-->
+<!--<li><a href="{{pathFor 'firstView'}}">Home</a></li>-->
+<!--<li class="{{class_active}}">{{views_name}}</li>-->
+<!--</ol>-->
+<!--</template>-->
 

@@ -6,3 +6,7 @@
 #addMeal {
     margin-bottom: 20px;
 }
+#addCategory {
+    float: right;
+    margin-bottom: 5px;
+}

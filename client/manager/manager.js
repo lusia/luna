@@ -7,29 +7,42 @@ Router.map(function () {
 	this.route("mealsListView", {
 		path: "/meals-list",
 		template: 'mealsListView',
-		layoutTemplate: "mainManagerTempl",
-		yieldTemplates: {
-			breadCrumbs: {to: "breadCrumbs"}
-		},
-		data: {
-			views_name: "Meals List",
-			class_active: "active"
-		}
+		layoutTemplate: "mainManagerTempl"
+	});
+	this.route("addMealForm", {
+		path: "/add-meal",
+		template: 'addMealForm',
+		layoutTemplate: "mainManagerTempl"
 	});
 });
 
 Meteor.subscribe("meals");
+var meals = Meals.find().fetch();
 
-Template.mealsListView.doc = function () {
+/**
+ * Group meals collection by category and  push result to the array for better iteration it in templates
+ * @param meals - documents from meals collection (object with category property)
+ * @returns {Array} example: [{category: string, meals: array of objects}]
+ */
+var groupMeals = function (meals) {
+	var mgbc = _.groupBy(meals, 'category'), //mealsGroupedByCategories
+		mealsList=[];
 
-	var data = Meals.find(), arr = [];
-
-	var result = _.groupBy(data.fetch(), 'category')
-
-	for (var key in result) {
-
-		arr.push({'category': key, 'meals': result[key]});
+	for (var category in mgbc) {
+		mealsList.push({'category': category, 'meals': mgbc[category]});
 	}
 
-	return arr;
-}
+	return mealsList;
+};
+
+Template.mealsListView.doc = function () {
+	var mealsList = groupMeals(meals);
+
+	return mealsList;
+};
+Template.addMealForm.categories = function () {
+	var mealsList = groupMeals(meals);
+
+	return mealsList;
+};
+
