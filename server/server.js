@@ -31,5 +31,6 @@ Meteor.startup(function () {
 });
 
 Meteor.publish("meals", function () {
+
 	return Meals.find();
 });
