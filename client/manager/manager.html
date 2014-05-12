@@ -73,11 +73,11 @@
             </div>
             <div class="form-group">
                 <label for="price">Price</label>
-                <input type="number" class="form-control" id="price" placeholder="Price" required>
+                <input class="form-control" id="price" placeholder="Price" required>
             </div>
             <div class="form-group">
                 <label for="calories">Calories</label>
-                <input type="number" class="form-control" id="calories" placeholder="Calories" required>
+                <input class="form-control" id="calories" placeholder="Calories" required>
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
@@ -88,9 +88,14 @@
                     {{/each}}
                 </select>
             </div>
+            <div id="warningLabel" class="form-group has-error dn">
+                <label class="control-label warningLabel"></label>
+            </div>
+            <br>
             <button id="submitNewMeal" type="submit" class="btn btn-primary">Add</button>
         </form>
     </div>
 </template>
+
 
 

@@ -1,3 +1,4 @@
+$("#warningLabel").hide();
 var sub = Meteor.subscribe("meals");
 
 var getMeals = function () {
@@ -33,4 +34,36 @@ Template.addMealForm.categories = function () {
 
 	return mealsList;
 };
+Template.addMealForm.events({
+	'click #submitNewMeal': function (ev) {
+		ev.preventDefault();
 
+		var query = {
+			name: $("#name").val(),
+			price: $("#price").val(),
+			calories: $("#calories").val(),
+			category: $("#category").val()
+		};
+
+		isInputsEmpty(query);
+	}
+});
+
+/**
+ * Validate inputs from add new meal form
+ * @param query - object with values from inputs
+ */
+var isInputsEmpty = function (query) {
+
+	if ((query.name === "")|| (query.price === "") || (query.calories === "")) {
+		$("#warningLabel").addClass("di")
+		$(".warningLabel").text("All fields are required");
+
+	}
+	if ((isNaN(query.price) === true) || (isNaN(query.calories) === true)) {
+		$("#warningLabel").addClass("di")
+		$(".warningLabel").text("To Price and Calories fields please enter a number");
+
+	}
+
+};

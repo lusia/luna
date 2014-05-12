@@ -10,3 +10,9 @@
     float: right;
     margin-bottom: 5px;
 }
+.dn {
+    display: none;
+}
+.di {
+    display: inline;
+}
