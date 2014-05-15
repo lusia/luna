@@ -38,32 +38,44 @@ Template.addMealForm.events({
 	'click #submitNewMeal': function (ev) {
 		ev.preventDefault();
 
-		var query = {
-			name: $("#name").val(),
+		var meals_data = {
+			name: $("#name").val().trim(),
 			price: $("#price").val(),
 			calories: $("#calories").val(),
 			category: $("#category").val()
 		};
 
-		isInputsEmpty(query);
+		areInputsValid(meals_data);
+
 	}
 });
 
 /**
- * Validate inputs from add new meal form
- * @param query - object with values from inputs
+ * Validate values from the inputs from add new meal form
+ * @param obj - object with values from inputs
  */
-var isInputsEmpty = function (query) {
+var areInputsValid = function (obj) {
 
-	if ((query.name === "")|| (query.price === "") || (query.calories === "")) {
-		$("#warningLabel").addClass("di")
-		$(".warningLabel").text("All fields are required");
+	if ((obj.name.length === 0) || (obj.price.length === 0) || (obj.calories.length === 0)) {
+		var info = "All fields are required";
+		displayInfo(info);
+	}
+	else if ((isNaN(obj.price) === true) || (isNaN(obj.calories) === true)) {
+		var info = "To Price and Calories fields please enter a number";
+		displayInfo(info);
 
 	}
-	if ((isNaN(query.price) === true) || (isNaN(query.calories) === true)) {
-		$("#warningLabel").addClass("di")
-		$(".warningLabel").text("To Price and Calories fields please enter a number");
-
+	else {
+		$('.dn').hide();
 	}
+};
+
+var displayInfo = function (info) {
+
+	$('.dn').show();
+
+	$("#warningLabel label").text(info);
 
 };
+
+
