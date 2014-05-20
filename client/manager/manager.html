@@ -81,14 +81,14 @@
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <button id="addCategory" type="button" class="btn btn-success">Add new category</button>
+                <a href="{{pathFor 'addNewCategory'}}" id="addCategory" class="btn btn-success">Add new category</a>
                 <select id="category" class="form-control">
                     {{#each categories}}
                     <option>{{category}}</option>
                     {{/each}}
                 </select>
             </div>
-            <div id="warningLabel" class="form-group has-error dn">
+            <div class="warningLabel form-group has-error dn">
                 <label class="control-label"></label>
             </div>
             <br>
@@ -97,5 +97,21 @@
     </div>
 </template>
 
+<template name="addNewCategory">
+    <div class="well well-sm">
+    <h2>Add new category</h2>
 
+    <form role="form">
+        <div class="form-group">
+            <label for="name_category">Name</label>
+            <input type="text" class="form-control" id="name_category" placeholder="Name of the category" required>
+        </div>
+        <div class="warningLabel form-group has-error dn">
+            <label class="control-label"></label>
+        </div>
+        <br>
+        <button id="submitNewCategory" type="submit" class="btn btn-primary">Add</button>
+    </form>
+        </div>
+</template>
 

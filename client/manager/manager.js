@@ -1,15 +1,14 @@
-$("#warningLabel").hide();
+$(".warningLabel").hide();
 var sub = Meteor.subscribe("meals");
 
 var getMeals = function () {
-
 	return Meals.find().fetch();
 };
 
 
 /**
  * Group meals collection by category and  push result to the array for better iteration it in templates
- * @param meals - documents from meals collection (object with category property)
+ * @param fn - documents from meals collection (object with category property)
  * @returns {Array} example: [{category: string, meals: array of objects}]
  */
 var groupMeals = function (fn) {
@@ -48,6 +47,18 @@ Template.addMealForm.events({
 		areInputsValid(meals_data);
 
 	}
+
+});
+Template.addNewCategory.events({
+	'click #submitNewCategory': function (ev) {
+		ev.preventDefault();
+		var category_data = {
+			name: $("#name_category").val().trim().toLowerCase()
+		};
+
+		isNameValid(category_data);
+		isDataExist(category_data.name);
+	}
 });
 
 /**
@@ -57,9 +68,11 @@ Template.addMealForm.events({
 var areInputsValid = function (obj) {
 
 	if ((obj.name.length === 0) || (obj.price.length === 0) || (obj.calories.length === 0)) {
+
 		var info = "All fields are required";
 		displayInfo(info);
 	}
+
 	else if ((isNaN(obj.price) === true) || (isNaN(obj.calories) === true)) {
 		var info = "To Price and Calories fields please enter a number";
 		displayInfo(info);
@@ -70,12 +83,31 @@ var areInputsValid = function (obj) {
 	}
 };
 
-var displayInfo = function (info) {
-
-	$('.dn').show();
-
-	$("#warningLabel label").text(info);
-
+var isNameValid = function (obj) {
+	if (obj.name.length === 0) {
+		var info = "Field is required";
+		displayInfo(info);
+	}
+	else {
+		$('.dn').hide();
+	}
 };
 
 
+var isDataExist = function (data) {
+	var meals = getMeals();
+
+	for (var i = 0; i < meals.length; i++) {
+		if (data === meals[0].category) {
+			var info = "This category name is already exist";
+			displayInfo(info);
+		}
+	}
+
+};
+
+var displayInfo = function (info) {
+
+	$('.dn').show();
+	$(".warningLabel label").text(info);
+};

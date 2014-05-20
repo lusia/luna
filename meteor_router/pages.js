@@ -14,4 +14,9 @@ Router.map(function () {
 		template: 'addMealForm',
 		layoutTemplate: "mainManagerTempl"
 	});
+	this.route("addNewCategory", {
+		path: "/add-category",
+		template: 'addNewCategory',
+		layoutTemplate: "mainManagerTempl"
+	});
 });
