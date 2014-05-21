@@ -28,7 +28,7 @@ Template.mealsListView.doc = function () {
 
 	return mealsList;
 };
-Template.addMealForm.categories = function () {
+Template.category.categories = function () {
 	var mealsList = groupMeals(getMeals);
 
 	return mealsList;
@@ -45,19 +45,20 @@ Template.addMealForm.events({
 		};
 
 		areInputsValid(meals_data);
+		isDataExist(meals_data.name);
 
 	}
 
 });
 Template.addNewCategory.events({
-	'click #submitNewCategory': function (ev) {
-		ev.preventDefault();
+	'click #submitNewCategory': function () {
 		var category_data = {
 			name: $("#name_category").val().trim().toLowerCase()
 		};
 
 		isNameValid(category_data);
 		isDataExist(category_data.name);
+
 	}
 });
 
@@ -93,7 +94,10 @@ var isNameValid = function (obj) {
 	}
 };
 
-
+/**
+ * Check if data is already exist in db
+ * @param data - string
+ */
 var isDataExist = function (data) {
 	var meals = getMeals();
 
@@ -103,7 +107,6 @@ var isDataExist = function (data) {
 			displayInfo(info);
 		}
 	}
-
 };
 
 var displayInfo = function (info) {
