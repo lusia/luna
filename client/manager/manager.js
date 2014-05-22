@@ -6,6 +6,9 @@ Meteor.subscribe("categories");
 var getMeals = function () {
 	return Meals.find().fetch();
 };
+var getCategories = function () {
+	return Categories.find().fetch();
+};
 
 
 /**
@@ -31,9 +34,9 @@ Template.mealsListView.doc = function () {
 	return mealsList;
 };
 Template.category.categories = function () {
-	var mealsList = groupMeals(getMeals);
+	var categoryList = getCategories();
 
-	return mealsList;
+	return categoryList;
 };
 Template.addMealForm.events({
 	'click #submitNewMeal': function (ev) {
