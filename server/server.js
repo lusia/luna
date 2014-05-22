@@ -27,10 +27,23 @@ Meteor.startup(function () {
 			Meals.insert(doc);
 		});
 	}
+	if (Categories.find().count() == 0) {
+		var categories = [
+			{"category_name": "a"},
+			{"category_name": "b"}
+		];
+		_.each(categories, function (doc) {
+			Categories.insert(doc);
+		});
+	}
 
 });
 
 Meteor.publish("meals", function () {
 
 	return Meals.find();
+});
+Meteor.publish("categories", function () {
+
+	return Categories.find();
 });

@@ -1,5 +1,7 @@
 $(".warningLabel").hide();
-var sub = Meteor.subscribe("meals");
+
+Meteor.subscribe("meals");
+Meteor.subscribe("categories");
 
 var getMeals = function () {
 	return Meals.find().fetch();
@@ -99,11 +101,13 @@ var isNameValid = function (obj) {
  * @param data - string
  */
 var isDataExist = function (data) {
+
 	var meals = getMeals();
 
 	for (var i = 0; i < meals.length; i++) {
-		if (data === meals[0].category) {
-			var info = "This category name is already exist";
+
+		if ((data === meals[i].name) || (data === meals[i].category)) {
+			var info = "This value is already exist";
 			displayInfo(info);
 		}
 	}
