@@ -38,30 +38,6 @@ Template.category.categories = function () {
 
 	return categoryList;
 };
-Template.addMealForm.events({
-	'click #submitNewMeal': function (ev) {
-		ev.preventDefault();
-
-		var meals_data = {
-			name: $("#name").val().trim(),
-			price: $("#price").val(),
-			calories: $("#calories").val(),
-			category: $("#category").val()
-		};
-
-		areInputsValid(meals_data);
-		isDataExist(meals_data.name);
-
-	},
-	'click #addCategory': function () {
-
-		Session.set("name", $("#name").val().trim());
-		Session.set("price", $("#price").val());
-		Session.set("calories", $("#category").val());
-	}
-
-});
-
 Template.addMealForm.helpers({
 	name: function () {
 
@@ -105,7 +81,33 @@ Template.addMealForm.helpers({
 	}
 
 });
+Template.addMealForm.events({
+	'click #submitNewMeal': function (ev) {
+		ev.preventDefault();
 
+		var meals_data = {
+			name: $("#name").val().trim(),
+			price: $("#price").val(),
+			calories: $("#calories").val(),
+			category: $("#category").val()
+		};
+
+		areInputsValid(meals_data);
+		isDataExist(meals_data.name);
+
+		Meteor.call("addNewMeal", meals_data, function (error, id) {
+			console.log(id);
+		});
+
+	},
+	'click #addCategory': function () {
+
+		Session.set("name", $("#name").val().trim());
+		Session.set("price", $("#price").val());
+		Session.set("calories", $("#category").val());
+	}
+
+});
 
 Template.addNewCategory.events({
 	'click #submitNewCategory': function () {

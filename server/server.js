@@ -39,6 +39,14 @@ Meteor.startup(function () {
 
 });
 
+Meteor.methods({
+	addNewMeal: function (meals) {
+		var id = Meals.insert(meals);
+
+		return id;
+	}
+});
+
 Meteor.publish("meals", function () {
 
 	return Meals.find();
