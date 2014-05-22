@@ -52,9 +52,61 @@ Template.addMealForm.events({
 		areInputsValid(meals_data);
 		isDataExist(meals_data.name);
 
+	},
+	'click #addCategory': function () {
+
+		Session.set("name", $("#name").val().trim());
+		Session.set("price", $("#price").val());
+		Session.set("calories", $("#category").val());
 	}
 
 });
+
+Template.addMealForm.helpers({
+	name: function () {
+
+		var placeholder = '';
+		if (Session.get("name")) {
+			placeholder = Session.get("name");
+
+			return placeholder
+		}
+		else {
+			placeholder = "Name of the meal";
+		}
+
+		return placeholder;
+	},
+	price: function () {
+		var placeholder = '';
+		if (Session.get("price")) {
+			placeholder = Session.get("price");
+
+			return placeholder
+		}
+		else {
+			placeholder = "Price";
+		}
+
+		return placeholder;
+	},
+	calories: function () {
+		var placeholder = '';
+		if (Session.get("calories")) {
+			placeholder = Session.get("calories");
+
+			return placeholder
+		}
+		else {
+			placeholder = "Calories";
+		}
+
+		return placeholder;
+	}
+
+});
+
+
 Template.addNewCategory.events({
 	'click #submitNewCategory': function () {
 		var category_data = {
