@@ -29,8 +29,8 @@ Meteor.startup(function () {
 	}
 	if (Categories.find().count() == 0) {
 		var categories = [
-			{"category_name": "a"},
-			{"category_name": "b"}
+			{"name": "a"},
+			{"name": "b"}
 		];
 		_.each(categories, function (doc) {
 			Categories.insert(doc);
@@ -42,6 +42,11 @@ Meteor.startup(function () {
 Meteor.methods({
 	addNewMeal: function (meals) {
 		var id = Meals.insert(meals);
+
+		return id;
+	},
+	addCategory: function (category) {
+		var id = Categories.insert(category);
 
 		return id;
 	}

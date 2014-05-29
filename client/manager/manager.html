@@ -65,38 +65,12 @@
     </ol>
     <div class="well well-sm">
         <h2>Add New Meal</h2>
-
-        <form role="form">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="{{name}}" required>
-            </div>
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input class="form-control" id="price" placeholder="{{price}}" required>
-            </div>
-            <div class="form-group">
-                <label for="calories">Calories</label>
-                <input class="form-control" id="calories" placeholder="{{calories}}" required>
-            </div>
-            <div class="form-group">
-                <label for="category">Category</label>
-                <a href="{{pathFor 'addNewCategory'}}" id="addCategory" class="btn btn-success">Add new category</a>
-                <select id="category" class="form-control">
-                    {{> category}}
-                </select>
-            </div>
-            <div class="warningLabel form-group has-error dn">
-                <label class="control-label"></label>
-            </div>
-            <br>
-            <button id="submitNewMeal" type="submit" class="btn btn-primary">Add</button>
-        </form>
+        {{> addNewMealForm}}
     </div>
 </template>
 <template name="category">
     {{#each categories}}
-    <option>{{category_name}}</option>
+    <option>{{name}}</option>
     {{/each}}
 </template>
 

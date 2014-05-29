@@ -93,10 +93,10 @@ Template.addMealForm.events({
 		};
 
 		areInputsValid(meals_data);
-		isDataExist(meals_data.name);
+		doesDataExist(meals_data.name);
 
 		Meteor.call("addNewMeal", meals_data, function (error, id) {
-			console.log(id);
+			console.log('idOfMeal', id);
 		});
 
 	},
@@ -110,14 +110,19 @@ Template.addMealForm.events({
 });
 
 Template.addNewCategory.events({
-	'click #submitNewCategory': function () {
+	'click #submitNewCategory': function (ev) {
+		ev.preventDefault();
+
 		var category_data = {
 			name: $("#name_category").val().trim().toLowerCase()
 		};
 
 		isNameValid(category_data);
-		isDataExist(category_data.name);
+		doesDataExist(category_data.name, 'category');
 
+		Meteor.call("addCategory", category_data, function (error, id) {
+
+		});
 	}
 });
 
@@ -136,7 +141,6 @@ var areInputsValid = function (obj) {
 	else if ((isNaN(obj.price) === true) || (isNaN(obj.calories) === true)) {
 		var info = "To Price and Calories fields please enter a number";
 		displayInfo(info);
-
 	}
 	else {
 		$('.dn').hide();
@@ -145,7 +149,7 @@ var areInputsValid = function (obj) {
 
 var isNameValid = function (obj) {
 	if (obj.name.length === 0) {
-		var info = "Field is required";
+		var info = "Value is required";
 		displayInfo(info);
 	}
 	else {
@@ -157,15 +161,30 @@ var isNameValid = function (obj) {
  * Check if data is already exist in db
  * @param data - string
  */
-var isDataExist = function (data) {
+var doesDataExist = function (data, col) {
+	var meals = getMeals(), categories = getCategories();
+	if (col === 'category') {
 
-	var meals = getMeals();
+		for (var i = 0; i < categories.length; i++) {
+			if (data === categories[i].name) {
+				var info = "This value already exists";
+				displayInfo(info);
+			} else {
+				console.log('ok');
+				$('.dn').hide();
 
-	for (var i = 0; i < meals.length; i++) {
+			}
+		}
+	} else {
 
-		if ((data === meals[i].name) || (data === meals[i].category)) {
-			var info = "This value is already exist";
-			displayInfo(info);
+		for (var i = 0; i < meals.length; i++) {
+			if (data === meals[i].name) {
+				var info = "This value already exists";
+				displayInfo(info);
+			} else {
+				console.log('ok');
+				$('.dn').hide();
+			}
 		}
 	}
 };
