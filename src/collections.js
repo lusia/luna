@@ -19,4 +19,12 @@ Meals = new Meteor.Collection("meals", {
 		}
 	}
 });
-Categories = new Meteor.Collection('categories');
+Categories = new Meteor.Collection('categories', {
+	schema: {
+		name: {
+			type: String,
+			label: "Name",
+			max: 50
+		}
+	}
+});

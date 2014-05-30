@@ -9,8 +9,6 @@
         <div class="page-header">
             <h1>Manager</h1>
         </div>
-        <!--{{> yield region="breadCrumbs"}}-->
-
         {{> yield}}
 
         <div class="panel-footer">Made proudly in Copenhagen by <a href="http://danat.dk/" target="_blank">Lusia </a><span
@@ -31,7 +29,7 @@
         <li class="active">Meals List</li>
     </ol>
 
-    <a id="addMeal" class="btn btn-primary" href="{{pathFor 'addMealForm'}}">Add new meal</a><br>
+    <a id="addMeal" class="btn btn-primary" href="{{pathFor 'addNewMeal'}}">Add new meal</a><br>
 
     <div class="well well-sm">
         <table id="tableWithMeals" class="table">
@@ -57,7 +55,7 @@
         </table>
     </div>
 </template>
-<template name="addMealForm">
+<template name="addNewMeal">
     <ol class="breadcrumb">
         <li><a href="{{pathFor 'firstView'}}">Home</a></li>
         <li><a href="{{pathFor 'mealsListView'}}">Meals List</a></li>
@@ -65,7 +63,7 @@
     </ol>
     <div class="well well-sm">
         <h2>Add New Meal</h2>
-        {{> addNewMealForm}}
+        {{> addMealForm}}
     </div>
 </template>
 <template name="category">
@@ -84,17 +82,7 @@
     <div class="well well-sm">
         <h2>Add new category</h2>
 
-        <form role="form">
-            <div class="form-group">
-                <label for="name_category">Name</label>
-                <input type="text" class="form-control" id="name_category" placeholder="Name of the category" required>
-            </div>
-            <div class="warningLabel form-group has-error dn">
-                <label class="control-label"></label>
-            </div>
-            <br>
-            <a href="{{pathFor 'addMealForm'}}" id="submitNewCategory" class="btn btn-primary">Add</a>
-        </form>
+        {{> addCategoryForm}}
     </div>
 </template>
 

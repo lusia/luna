@@ -1,4 +1,4 @@
-<template name="addNewMealForm">
+<template name="addMealForm">
     {{#autoForm collection="Meals" id="insertMealForm" type="insert"}}
     <fieldset>
         {{> afFieldLabel name='name'}}
@@ -8,6 +8,7 @@
         {{> afFieldLabel name='calories'}}
         {{> afFieldInput name='calories'}}
         {{> afFieldLabel name='category'}}
+        <a href="{{pathFor 'addNewCategory'}}" id="addCategory" class="btn btn-success">Add new category</a>
         {{#afFieldSelect name="category"}}
         {{> category}}
         {{/afFieldSelect}}
@@ -16,5 +17,4 @@
     <br>
     <button id="submitNewMeal" type="submit" class="btn btn-primary">Add</button>
     {{/autoForm}}
-
 </template>
