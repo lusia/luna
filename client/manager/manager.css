@@ -6,10 +6,11 @@
 #addMeal {
     margin-bottom: 20px;
 }
+
 #addCategory {
-    float: right;
-    margin-bottom: 5px;
+    margin: 5px 0 5px 913px;
 }
+
 .dn {
     display: none;
 }

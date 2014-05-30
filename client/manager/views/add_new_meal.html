@@ -1,0 +1,11 @@
+<template name="addNewMeal">
+    <ol class="breadcrumb">
+        <li><a href="{{pathFor 'firstView'}}">Home</a></li>
+        <li><a href="{{pathFor 'mealsListView'}}">Meals List</a></li>
+        <li class="active">Add Meal</li>
+    </ol>
+    <div class="well well-sm">
+        <h2>Add New Meal</h2>
+        {{> addMealForm}}
+    </div>
+</template>

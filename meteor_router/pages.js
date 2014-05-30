@@ -9,9 +9,9 @@ Router.map(function () {
 		template: 'mealsListView',
 		layoutTemplate: "mainManagerTempl"
 	});
-	this.route("addMealForm", {
+	this.route("addNewMeal", {
 		path: "/add-meal",
-		template: 'addMealForm',
+		template: 'addNewMeal',
 		layoutTemplate: "mainManagerTempl"
 	});
 	this.route("addNewCategory", {

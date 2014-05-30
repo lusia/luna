@@ -1,0 +1,32 @@
+<template name="mealsListView">
+    <ol class="breadcrumb">
+        <li><a href="{{pathFor 'firstView'}}">Home</a></li>
+        <li class="active">Meals List</li>
+    </ol>
+
+    <a id="addMeal" class="btn btn-primary" href="{{pathFor 'addNewMeal'}}">Add new meal</a><br>
+
+    <div class="well well-sm">
+        <table id="tableWithMeals" class="table">
+            <tr>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Calories</th>
+                <th>Actions</th>
+            </tr>
+            {{#each doc}}
+            <tr>
+                <th colspan="4">{{category}}</th>
+            </tr>
+            {{#each meals}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{calories}}</td>
+                <td>{{price}}</td>
+                <td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {{/each}}
+            {{/each}}
+        </table>
+    </div>
+</template>
