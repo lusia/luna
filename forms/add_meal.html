@@ -8,7 +8,7 @@
         {{> afFieldLabel name='calories'}}
         {{> afFieldInput name='calories'}}
         {{> afFieldLabel name='category'}}
-        <a href="{{pathFor 'addNewCategory'}}" id="addCategory" class="btn btn-success">Add new category</a>
+        <a href="{{pathFor 'manager_category_add'}}" id="addCategory" class="btn btn-success">Add new category</a>
         {{#afFieldSelect name="category"}}
         {{> category}}
         {{/afFieldSelect}}

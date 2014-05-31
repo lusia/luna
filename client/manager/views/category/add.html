@@ -1,0 +1,12 @@
+<template name="manager_category_add">
+
+    {{#autoForm collection="Categories" id="insertCategoryForm" type="insert"}}
+    <fieldset>
+        {{> afFieldLabel name='name'}}
+        {{> afFieldInput name='name'}}
+    </fieldset>
+    <br>
+    <a href="{{pathFor 'updateMeal'}}" id="#submitNewCategory" type="submit" class="btn btn-primary">Add</a>
+    {{/autoForm}}
+
+</template>

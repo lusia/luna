@@ -36,7 +36,6 @@ Meteor.startup(function () {
 			Categories.insert(doc);
 		});
 	}
-
 });
 
 Meteor.methods({

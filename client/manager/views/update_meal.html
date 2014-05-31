@@ -1,13 +1,11 @@
-<template name="addNewCategory">
+<template name="updateMeal">
     <ol class="breadcrumb">
         <li><a href="{{pathFor 'firstView'}}">Home</a></li>
         <li><a href="{{pathFor 'mealsListView'}}">Meals List</a></li>
-        <li><a href="{{pathFor 'addNewMeal'}}">Add Meal</a></li>
-        <li class="active">Add Category</li>
+        <li class="active">Add Meal</li>
     </ol>
     <div class="well well-sm">
-        <h2>Add new category</h2>
-
-        {{> addCategoryForm}}
+        <h2>Add Meal</h2>
+        {{> updateMealForm}}
     </div>
 </template>
