@@ -1,20 +1,35 @@
 <template name="addMealForm">
-    {{#autoForm collection="Meals" id="insertMealForm" type="insert"}}
+    {{#autoForm collection="Meals" id="insertMealForm" type="insert" validation='submit'}}
     <fieldset>
-        {{> afFieldLabel name='name'}}
-        {{> afFieldInput name='name'}}
-        {{> afFieldLabel name='price'}}
-        {{> afFieldInput name='price'}}
-        {{> afFieldLabel name='calories'}}
-        {{> afFieldInput name='calories'}}
+        <div class="form-group {{#if afFieldIsInvalid name='name'}}has-error{{/if}}">
+            {{> afFieldLabel name='name'}}
+            {{> afFieldInput name='name' class='name'}}
+            {{#if afFieldIsInvalid name='name'}}
+            <span class="help-block">{{{afFieldMessage name='name'}}}</span>
+            {{/if}}
+        </div>
+        <div class="form-group {{#if afFieldIsInvalid name='price'}}has-error{{/if}}">
+            {{> afFieldLabel name='price'}}
+            {{> afFieldInput name='price' class='price'}}
+            {{#if afFieldIsInvalid name='price'}}
+            <span class="help-block">{{{afFieldMessage name='price'}}}</span>
+            {{/if}}
+        </div>
+        <div class="form-group {{#if afFieldIsInvalid name='calories'}}has-error{{/if}}">
+            {{> afFieldLabel name='calories'}}
+            {{> afFieldInput name='calories' class='calories'}}
+            {{#if afFieldIsInvalid name='calories'}}
+            <span class="help-block">{{{afFieldMessage name='calories'}}}</span>
+            {{/if}}
+        </div>
         {{> afFieldLabel name='category'}}
-        <a href="{{pathFor 'manager_category_add'}}" id="addCategory" class="btn btn-success">Add new category</a>
-        {{#afFieldSelect name="category"}}
+        <a href="{{pathFor 'addNewCategory'}}" id="addCategory" class="btn btn-success">Add new category</a>
+        {{#afFieldSelect name="category" class='category'}}
         {{> category}}
         {{/afFieldSelect}}
-
     </fieldset>
     <br>
     <button id="submitNewMeal" type="submit" class="btn btn-primary">Add</button>
     {{/autoForm}}
+
 </template>

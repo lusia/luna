@@ -39,160 +39,40 @@ Template.category.categories = function () {
 	return categoryList;
 };
 
-//Template.addMealForm.helpers({
-//	name: function () {
-//
-//		var placeholder = '';
-//		if (Session.get("name")) {
-//			placeholder = Session.get("name");
-//
-//			return placeholder
-//		}
-//		else {
-//			placeholder = "Name of the meal";
-//		}
-//
-//		return placeholder;
-//	},
-//	price: function () {
-//		var placeholder = '';
-//		if (Session.get("price")) {
-//			placeholder = Session.get("price");
-//
-//			return placeholder
-//		}
-//		else {
-//			placeholder = "Price";
-//		}
-//
-//		return placeholder;
-//	},
-//	calories: function () {
-//		var placeholder = '';
-//		if (Session.get("calories")) {
-//			placeholder = Session.get("calories");
-//
-//			return placeholder
-//		}
-//		else {
-//			placeholder = "Calories";
-//		}
-//
-//		return placeholder;
-//	}
-
-//});
 
 Template.addMealForm.events({
-	'click #submitNewMeal': function (ev) {
-		ev.preventDefault();
+	'click #submitNewMeal': function () {
 
 		var meals_data = {
-			name: $("#name").val().trim(),
-			price: $("#price").val(),
-			calories: $("#calories").val(),
-			category: $("#category").val()
+			name: $(".name").val().trim(),
+			price: $(".price").val(),
+			calories: $(".calories").val(),
+			category: [$(".category").val()]
 		};
 
-//		areInputsValid(meals_data);
-//		doesDataExist(meals_data.name);
-
 		Meteor.call("addNewMeal", meals_data, function (error, id) {
-			console.log('idOfMeal', id);
+
 		});
 
 	},
 	'click #addCategory': function () {
 
-		Session.set("name", $("#name").val().trim());
-		Session.set("price", $("#price").val());
-		Session.set("calories", $("#category").val());
+		Session.set("name", $(".name").val().trim());
+		Session.set("price", $(".price").val());
+		Session.set("calories", $(".category").val());
 	}
 
 });
 
-Template.addNewCategory.events({
-	'click #submitNewCategory': function (ev) {
-		ev.preventDefault();
+Template.managerCategoryAdd.events({
+	'click #submitNewCategory': function () {
 
 		var category_data = {
-			name: $("#name_category").val().trim().toLowerCase()
+			name: $(".name_category").val().trim().toLowerCase()
 		};
-
-//		isNameValid(category_data);
-//		doesDataExist(category_data.name, 'category');
-
 		Meteor.call("addCategory", category_data, function (error, id) {
-
 		});
+
 	}
 });
 
-/**
- * Validate values from the inputs from add new meal form
- * @param obj - object with values from inputs
- */
-//var areInputsValid = function (obj) {
-//
-//	if ((obj.name.length === 0) || (obj.price.length === 0) || (obj.calories.length === 0)) {
-//
-//		var info = "All fields are required";
-//		displayInfo(info);
-//	}
-//
-//	else if ((isNaN(obj.price) === true) || (isNaN(obj.calories) === true)) {
-//		var info = "To Price and Calories fields please enter a number";
-//		displayInfo(info);
-//	}
-//	else {
-//		$('.dn').hide();
-//	}
-//};
-//
-//var isNameValid = function (obj) {
-//	if (obj.name.length === 0) {
-//		var info = "Value is required";
-//		displayInfo(info);
-//	}
-//	else {
-//		$('.dn').hide();
-//	}
-//};
-
-/**
- * Check if data is already exist in db
- * @param data - string
- */
-//var doesDataExist = function (data, col) {
-//	var meals = getMeals(), categories = getCategories();
-//	if (col === 'category') {
-//
-//		for (var i = 0; i < categories.length; i++) {
-//			if (data === categories[i].name) {
-//				var info = "This value already exists";
-//				displayInfo(info);
-//			} else {
-//				console.log('ok');
-//				$('.dn').hide();
-//
-//			}
-//		}
-//	} else {
-//
-//		for (var i = 0; i < meals.length; i++) {
-//			if (data === meals[i].name) {
-//				var info = "This value already exists";
-//				displayInfo(info);
-//			} else {
-//				console.log('ok');
-//				$('.dn').hide();
-//			}
-//		}
-//	}
-//};
-//
-//var displayInfo = function (info) {
-//
-//	$('.dn').show();
-//	$(".warningLabel label").text(info);
-//};

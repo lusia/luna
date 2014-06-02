@@ -1,12 +1,18 @@
-<template name="manager_category_add">
+<template name="managerCategoryAdd">
 
     {{#autoForm collection="Categories" id="insertCategoryForm" type="insert"}}
     <fieldset>
-        {{> afFieldLabel name='name'}}
-        {{> afFieldInput name='name'}}
+        <div class="form-group {{#if afFieldIsInvalid name='name'}}has-error{{/if}}">
+            {{> afFieldLabel name='name'}}
+            {{> afFieldInput name='name' class='name_category'}}
+            {{#if afFieldIsInvalid name='name'}}
+            <span class="help-block">{{{afFieldMessage name='name'}}}</span>
+            {{/if}}
+        </div>
     </fieldset>
     <br>
-    <a href="{{pathFor 'updateMeal'}}" id="#submitNewCategory" type="submit" class="btn btn-primary">Add</a>
+
+    <button id="submitNewCategory" type="submit" class="btn btn-primary">Add</button>
     {{/autoForm}}
 
 </template>

@@ -1,21 +1,22 @@
 <template name="updateMealForm">
 
-    {{#autoForm collection="Meals" doc=editingDoc id="updateMealForm" type="update"}}
+    <!--{{#autoForm collection="Meals" doc=editingDoc id="updateMealForm" type="update"}}-->
 
-<fieldset>
-    {{> afFieldLabel name='name'}}
-    {{> afFieldInput name='name'}}
-    {{> afFieldLabel name='price'}}
-    {{> afFieldInput name='price'}}
-    {{> afFieldLabel name='calories'}}
-    {{> afFieldInput name='calories'}}
-    {{> afFieldLabel name='category'}}
-    {{#afFieldSelect name="category"}}
-    {{> category}}
-    {{/afFieldSelect}}
+    {{> quickForm collection="Meals" doc=editingDoc id="updateMealForm" type="update"}}
+<!--<fieldset>-->
+    <!--{{> afFieldLabel name='name'}}-->
+    <!--{{> afFieldInput name='name'}}-->
+    <!--{{> afFieldLabel name='price'}}-->
+    <!--{{> afFieldInput name='price'}}-->
+    <!--{{> afFieldLabel name='calories'}}-->
+    <!--{{> afFieldInput name='calories'}}-->
+    <!--{{> afFieldLabel name='category'}}-->
+    <!--{{#afFieldSelect name="category"}}-->
+    <!--{{> category}}-->
+    <!--{{/afFieldSelect}}-->
 
-</fieldset>
-<br>
-<button id="submitNewMeal" type="submit" class="btn btn-primary">Add</button>
-{{/autoForm}}
+<!--</fieldset>-->
+<!--<br>-->
+<!--<button id="submitNewMeal" type="submit" class="btn btn-primary">Add</button>-->
+<!--{{/autoForm}}-->
 </template>

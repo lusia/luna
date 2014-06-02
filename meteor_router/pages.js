@@ -14,9 +14,9 @@ Router.map(function () {
 		template: 'addNewMeal',
 		layoutTemplate: "main"
 	});
-	this.route("manager_category_add", {
+	this.route("addNewCategory", {
 		path: "/add-category",
-		template: 'manager_category_add',
+		template: 'addNewCategory',
 		layoutTemplate: "main"
 	});
 	this.route("updateMeal", {
