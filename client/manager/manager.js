@@ -76,3 +76,10 @@ Template.managerCategoryAdd.events({
 	}
 });
 
+AutoForm.hooks({
+	insertCategoryForm: {
+		onSuccess: function(insert, result, managerCategoryAdd) {
+			Router.go('updateMeal');
+		}
+	}
+});
