@@ -4,24 +4,24 @@ Router.map(function () {
 		template: 'firstView',
 		layoutTemplate: "main"
 	});
-	this.route("mealsListView", {
+	this.route("managerMealList", {
 		path: "/meals-list",
-		template: 'mealsListView',
+		template: 'managerMealList',
 		layoutTemplate: "main"
 	});
-	this.route("addNewMeal", {
+	this.route("managerMealLayout", {
 		path: "/add-meal",
-		template: 'addNewMeal',
+		template: 'managerMealLayout',
 		layoutTemplate: "main"
 	});
-	this.route("addNewCategory", {
+	this.route("managerCategoryLayout", {
 		path: "/add-category",
-		template: 'addNewCategory',
+		template: 'managerCategoryLayout',
 		layoutTemplate: "main"
 	});
-	this.route("updateMeal", {
+	this.route("managerMealUpdateLayout", {
 		path: "/update-meal",
-		template: 'updateMeal',
+		template: 'managerMealUpdateLayout',
 		layoutTemplate: "main"
 	});
 });

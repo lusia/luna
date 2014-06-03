@@ -1,4 +1,4 @@
-<template name="addMealForm">
+<template name="managerMealAdd">
     {{#autoForm collection="Meals" id="insertMealForm" type="insert" validation='submit'}}
     <fieldset>
         <div class="form-group {{#if afFieldIsInvalid name='name'}}has-error{{/if}}">
@@ -23,9 +23,9 @@
             {{/if}}
         </div>
         {{> afFieldLabel name='category'}}
-        <a href="{{pathFor 'addNewCategory'}}" id="addCategory" class="btn btn-success">Add new category</a>
+        <a href="{{pathFor 'managerCategoryLayout'}}" id="addCategory" class="btn btn-success">Add new category</a>
         {{#afFieldSelect name="category" class='category'}}
-        {{> category}}
+        {{> managerCategoryList}}
         {{/afFieldSelect}}
     </fieldset>
     <br>

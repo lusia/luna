@@ -1,11 +1,11 @@
-<template name="updateMeal">
+<template name="managerMealLayout">
     <ol class="breadcrumb">
         <li><a href="{{pathFor 'firstView'}}">Home</a></li>
-        <li><a href="{{pathFor 'mealsListView'}}">Meals List</a></li>
+        <li><a href="{{pathFor 'managerMealList'}}">Meals List</a></li>
         <li class="active">Add Meal</li>
     </ol>
     <div class="well well-sm">
-        <h2>Add Meal</h2>
-        {{> updateMealForm}}
+        <h2>Add New Meal</h2>
+        {{> managerMealAdd}}
     </div>
 </template>

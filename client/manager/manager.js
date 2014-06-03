@@ -28,19 +28,19 @@ var groupMeals = function (fn) {
 	return mealsList;
 };
 
-Template.mealsListView.doc = function () {
+Template.managerMealList.doc = function () {
 	var mealsList = groupMeals(getMeals);
 
 	return mealsList;
 };
-Template.category.categories = function () {
+Template.managerCategoryList.categories = function () {
 	var categoryList = getCategories();
 
 	return categoryList;
 };
 
 
-Template.addMealForm.events({
+Template.managerMealAdd.events({
 	'click #submitNewMeal': function () {
 
 		var meals_data = {
@@ -50,7 +50,7 @@ Template.addMealForm.events({
 			category: [$(".category").val()]
 		};
 
-		Meteor.call("addNewMeal", meals_data, function (error, id) {
+		Meteor.call("managerMealLayout", meals_data, function (error, id) {
 
 		});
 
@@ -71,15 +71,18 @@ Template.managerCategoryAdd.events({
 			name: $(".name_category").val().trim().toLowerCase()
 		};
 		Meteor.call("addCategory", category_data, function (error, id) {
+
 		});
+
 
 	}
 });
 
 AutoForm.hooks({
 	insertCategoryForm: {
-		onSuccess: function(insert, result, managerCategoryAdd) {
-			Router.go('updateMeal');
+		onSuccess: function (insert, result, managerCategoryAdd) {
+
+			Router.go('managerMealUpdateLayout');
 		}
 	}
 });

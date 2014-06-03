@@ -25,6 +25,7 @@ Categories = new Meteor.Collection('categories', {
 			type: String,
 			label: "Name",
 			max: 50
+
 		}
 	}
 });

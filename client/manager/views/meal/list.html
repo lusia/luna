@@ -1,10 +1,10 @@
-<template name="mealsListView">
+<template name="managerMealList">
     <ol class="breadcrumb">
         <li><a href="{{pathFor 'firstView'}}">Home</a></li>
         <li class="active">Meals List</li>
     </ol>
 
-    <a id="addMeal" class="btn btn-primary" href="{{pathFor 'addNewMeal'}}">Add new meal</a><br>
+    <a id="addMeal" class="btn btn-primary" href="{{pathFor 'managerMealLayout'}}">Add new meal</a><br>
 
     <div class="well well-sm">
         <table id="tableWithMeals" class="table">
@@ -23,7 +23,7 @@
                 <td>{{name}}</td>
                 <td>{{calories}}</td>
                 <td>{{price}}</td>
-                <td><a href="{{pathFor 'updateMeal'}}" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+                <td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
             </tr>
             {{/each}}
             {{/each}}

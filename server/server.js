@@ -36,6 +36,7 @@ Meteor.startup(function () {
 			Categories.insert(doc);
 		});
 	}
+
 });
 
 Meteor.methods({
@@ -45,6 +46,7 @@ Meteor.methods({
 		return id;
 	},
 	addCategory: function (category) {
+
 		var id = Categories.insert(category);
 
 		return id;
@@ -59,3 +61,4 @@ Meteor.publish("categories", function () {
 
 	return Categories.find();
 });
+
