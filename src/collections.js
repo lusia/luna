@@ -24,8 +24,9 @@ Categories = new Meteor.Collection('categories', {
 		name: {
 			type: String,
 			label: "Name",
-			max: 50
-
+			max: 50,
+			index: 1,
+			unique: true
 		}
 	}
 });

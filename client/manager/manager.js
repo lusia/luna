@@ -42,7 +42,6 @@ Template.managerCategoryList.categories = function () {
 
 Template.managerMealAdd.events({
 	'click #submitNewMeal': function () {
-
 		var meals_data = {
 			name: $(".name").val().trim(),
 			price: $(".price").val(),
@@ -50,7 +49,7 @@ Template.managerMealAdd.events({
 			category: [$(".category").val()]
 		};
 
-		Meteor.call("managerMealLayout", meals_data, function (error, id) {
+		Meteor.call("addMeal", meals_data, function (error, id) {
 
 		});
 
@@ -72,17 +71,10 @@ Template.managerCategoryAdd.events({
 		};
 		Meteor.call("addCategory", category_data, function (error, id) {
 
+			if (id) {
+				Router.go('managerMealUpdateLayout');
+			}
 		});
-
-
 	}
 });
 
-AutoForm.hooks({
-	insertCategoryForm: {
-		onSuccess: function (insert, result, managerCategoryAdd) {
-
-			Router.go('managerMealUpdateLayout');
-		}
-	}
-});
