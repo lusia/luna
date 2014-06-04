@@ -1,27 +1,27 @@
 Router.map(function () {
-	this.route("firstView", {
+	this.route("main", {
 		path: "/",
-		template: 'firstView',
-		layoutTemplate: "main"
+		template: 'main',
+		layoutTemplate: "layout"
 	});
 	this.route("managerMealList", {
 		path: "/meals-list",
 		template: 'managerMealList',
-		layoutTemplate: "main"
+		layoutTemplate: "layout"
 	});
 	this.route("managerMealLayout", {
 		path: "/add-meal",
 		template: 'managerMealLayout',
-		layoutTemplate: "main"
+		layoutTemplate: "layout"
 	});
 	this.route("managerCategoryLayout", {
 		path: "/add-category",
 		template: 'managerCategoryLayout',
-		layoutTemplate: "main"
+		layoutTemplate: "layout"
 	});
 	this.route("managerMealUpdateLayout", {
 		path: "/update-meal",
 		template: 'managerMealUpdateLayout',
-		layoutTemplate: "main"
+		layoutTemplate: "layout"
 	});
 });
