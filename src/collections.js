@@ -3,7 +3,9 @@ Meals = new Meteor.Collection("meals", {
 		name: {
 			type: String,
 			label: "Name",
-			max: 50
+			max: 50,
+			index: 1,
+			unique: true
 		},
 		price: {
 			type: Number,
