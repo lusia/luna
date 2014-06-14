@@ -55,12 +55,14 @@ Template.managerMealAdd.events({
 
 	},
 	'click #addCategory': function () {
+		Session.set('recentlyAddedForm',
+			{name: $(".name").val().trim()},
+			{price: $(".price").val()},
+			{calories: $(".category").val()}
+		);
 
-		Session.set("name", $(".name").val().trim());
-		Session.set("price", $(".price").val());
-		Session.set("calories", $(".category").val());
+
 	}
-
 });
 
 Template.managerCategoryAdd.events({

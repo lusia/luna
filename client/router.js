@@ -22,6 +22,9 @@ Router.map(function () {
 	this.route("managerMealUpdateLayout", {
 		path: "/update-meal",
 		template: 'managerMealUpdateLayout',
-		layoutTemplate: "layout"
+		layoutTemplate: "layout",
+		data : {
+
+		}
 	});
 });
