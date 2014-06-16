@@ -1,0 +1,17 @@
+/* line 2, ../sass/manager.scss */
+.manager #mealsList {
+  border-collapse: separate;
+  border-spacing: 8px;
+}
+/* line 7, ../sass/manager.scss */
+.manager #addMeal {
+  margin-bottom: 20px;
+}
+/* line 11, ../sass/manager.scss */
+.manager #addCategory {
+  margin: 5px 0 5px 913px;
+}
+/* line 15, ../sass/manager.scss */
+.manager .dn {
+  display: none;
+}

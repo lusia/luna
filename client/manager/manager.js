@@ -10,7 +10,6 @@ var getCategories = function () {
 	return Categories.find().fetch();
 };
 
-
 /**
  * Group meals collection by category and  push result to the array for better iteration it in templates
  * @param fn - documents from meals collection (object with category property)
@@ -39,44 +38,26 @@ Template.managerCategoryList.categories = function () {
 	return categoryList;
 };
 
+AutoForm.hooks({
+	insertCategoryForm: {
+		onError: function (insert, error, template) {
+			console.log('error', error);
+			console.log('err templ', template);
+		},
+		onSuccess: function (operation, result, template) {
 
-Template.managerMealAdd.events({
-	'click #submitNewMeal': function () {
-		var meals_data = {
-			name: $(".name").val().trim(),
-			price: $(".price").val(),
-			calories: $(".calories").val(),
-			category: [$(".category").val()]
-		};
-
-		Meteor.call("addMeal", meals_data, function (error, id) {
-
-		});
-
-	},
-	'click #addCategory': function () {
-		Session.set('recentlyAddedForm',
-			{name: $(".name").val().trim()},
-			{price: $(".price").val()},
-			{calories: $(".category").val()}
-		);
-
-
+			Router.go('managerMealUpdateLayout');
+		}
 	}
 });
 
-Template.managerCategoryAdd.events({
-	'click #submitNewCategory': function () {
-
-		var category_data = {
-			name: $(".name_category").val().trim().toLowerCase()
-		};
-		Meteor.call("addCategory", category_data, function (error, id) {
-
-			if (id) {
-				Router.go('managerMealUpdateLayout');
-			}
-		});
+AutoForm.hooks({
+	insertMealForm: {
+		onError: function (insert, error, template) {
+			console.log('error', error);
+		},
+		onSuccess: function (operation, result, template) {
+			console.log('Success');
+		}
 	}
 });
-

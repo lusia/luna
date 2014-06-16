@@ -1,18 +1,4 @@
 <template name="managerCategoryAdd">
 
-    {{#autoForm collection="Categories" id="insertCategoryForm" type="insert"}}
-    <fieldset>
-        <div class="form-group {{#if afFieldIsInvalid name='name'}}has-error{{/if}}">
-            {{> afFieldLabel name='name'}}
-            {{> afFieldInput name='name' class='name_category'}}
-            {{#if afFieldIsInvalid name='name'}}
-            <span class="help-block">{{{afFieldMessage name='name'}}}</span>
-            {{/if}}
-        </div>
-    </fieldset>
-    <br>
-
-    <button id="submitNewCategory" type="submit" class="btn btn-primary">Add</button>
-    {{/autoForm}}
-
+    {{> quickForm collection="Categories" id="insertCategoryForm" type="insert" meteormethod = "addCategory"}}
 </template>

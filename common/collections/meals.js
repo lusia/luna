@@ -16,7 +16,7 @@ Meals = new Meteor.Collection("meals", {
 			label: "Calories"
 		},
 		category: {
-			type: [String],
+			type: String,
 			label: "Category"
 		}
 	}

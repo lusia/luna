@@ -1,16 +1,18 @@
-#tableWithMeals {
+.manager {
+  #mealsList {
     border-collapse: separate;
     border-spacing: 8px;
-}
+  }
 
-#addMeal {
+  #addMeal {
     margin-bottom: 20px;
-}
+  }
 
-#addCategory {
+  #addCategory {
     margin: 5px 0 5px 913px;
-}
+  }
 
-.dn {
+  .dn {
     display: none;
+  }
 }
