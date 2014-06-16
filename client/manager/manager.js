@@ -33,9 +33,13 @@ Template.managerMealList.doc = function () {
 	return mealsList;
 };
 Template.managerCategoryList.categories = function () {
-	var categoryList = getCategories();
+	var categoryList = getCategories(),
+		sortedCategory = _.sortBy(categoryList, function (category) {
 
-	return categoryList;
+			return category.name;
+		});
+
+	return sortedCategory;
 };
 
 AutoForm.hooks({
