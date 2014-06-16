@@ -6,10 +6,11 @@
         {{> afQuickField name='price'}}
         {{> afQuickField name='calories'}}
         {{> afFieldLabel name='category'}}
+        <a id="linkToAddCategory" href="{{pathFor 'managerCategoryLayout'}}" class="btn btn-primary">Add category</a>
         {{#afFieldSelect name="category" class='category'}}-->
         {{> managerCategoryList}}
         {{/afFieldSelect}}
     </fieldset>
-    <button type="submit" class="btn btn-primary">Insert</button>
+    <button id="addMealButton" type="submit" class="btn btn-primary">Submit</button>
     {{/autoForm}}
 </template>

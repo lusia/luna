@@ -1,18 +1,20 @@
+.dn {
+  display: none;
+}
+
 .manager {
   #mealsList {
     border-collapse: separate;
     border-spacing: 8px;
   }
 
-  #addMeal {
-    margin-bottom: 20px;
+  .buttonsBlockInMealList {
+    margin-bottom: 10px;
   }
-
-  #addCategory {
-    margin: 5px 0 5px 913px;
+  #addMealButton {
+    margin-top: 10px;
   }
-
-  .dn {
-    display: none;
+  #linkToAddCategory {
+    margin: 0 0 10px 940px;
   }
 }

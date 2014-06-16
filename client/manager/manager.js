@@ -45,8 +45,7 @@ AutoForm.hooks({
 			console.log('err templ', template);
 		},
 		onSuccess: function (operation, result, template) {
-
-			Router.go('managerMealUpdateLayout');
+			Router.go('managerMealList');
 		}
 	}
 });
@@ -57,7 +56,7 @@ AutoForm.hooks({
 			console.log('error', error);
 		},
 		onSuccess: function (operation, result, template) {
-			console.log('Success');
+			Router.go('managerMealList');
 		}
 	}
 });

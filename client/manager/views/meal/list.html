@@ -3,9 +3,10 @@
         <li><a href="{{pathFor 'main'}}">Home</a></li>
         <li class="active">Meals List</li>
     </ol>
-
-    <a id="addMeal" class="btn btn-primary" href="{{pathFor 'managerMealLayout'}}">Add new meal</a><br>
-
+    <div class="buttonsBlockInMealList">
+        <a class="btn btn-primary" href="{{pathFor 'managerMealLayout'}}">Add new meal</a>
+        <a class="btn btn-primary" href="{{pathFor 'managerCategoryLayout'}}">Add new category</a>
+    </div>
     <div class="well well-sm">
         <table id="mealsList" class="table">
             <tr>
