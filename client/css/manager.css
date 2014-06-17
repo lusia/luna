@@ -20,3 +20,7 @@
 .manager #linkToAddCategory {
   margin: 0 0 10px 940px;
 }
+/* line 20, ../sass/manager.scss */
+.manager .description {
+  resize: none;
+}

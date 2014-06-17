@@ -3,11 +3,13 @@
     <fieldset>
 
         {{> afQuickField name='name'}}
-        {{> afQuickField name='price'}}
+        {{> afQuickField name='price' class='price'}}
         {{> afQuickField name='calories'}}
-        {{> afFieldLabel name='category'}}
+        {{> afQuickField name='description' rows=2 class='description'}}
+        {{> afQuickField name='weight'}}
+        {{> afFieldLabel name='category_id'}}
         <a id="linkToAddCategory" href="{{pathFor 'managerCategoryLayout'}}" class="btn btn-primary">Add category</a>
-        {{#afFieldSelect name="category" class='category'}}-->
+        {{#afFieldSelect name="category_id" id='category'}}-->
         {{> managerCategoryList}}
         {{/afFieldSelect}}
     </fieldset>

@@ -17,11 +17,13 @@ var getCategories = function () {
  */
 var groupMeals = function (fn) {
 	var meals = fn(),
-		mgbc = _.groupBy(meals, 'category'), //mealsGroupedByCategories
-		mealsList = [];
+		mgbc = _.groupBy(meals, 'category_id'), //mealsGroupedByCategories
+		mealsList = [],
+		categoryName;
 
-	for (var category in mgbc) {
-		mealsList.push({'category': category, 'meals': mgbc[category]});
+	for (var category_id in mgbc) {
+		categoryName = Categories.findOne({_id: category_id}); //find the name of category
+		mealsList.push({'category_id': categoryName.name, 'meals': mgbc[category_id]});
 	}
 
 	return mealsList;
@@ -56,10 +58,21 @@ AutoForm.hooks({
 
 AutoForm.hooks({
 	insertMealForm: {
+		before: {
+			//Modified doc before insert it
+			insert: function (doc, template) {
+				var categoryId = Categories.findOne({name: doc.category_id});
+				doc.category_id = categoryId._id;
+
+				return doc;
+			}
+		},
 		onError: function (insert, error, template) {
 			console.log('error', error);
 		},
 		onSuccess: function (operation, result, template) {
+			//console.log($("#category").val());
+
 			Router.go('managerMealList');
 		}
 	}

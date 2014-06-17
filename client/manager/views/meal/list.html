@@ -13,17 +13,21 @@
                 <th>Category</th>
                 <th>Price</th>
                 <th>Calories</th>
+                <th>Weight</th>
+                <th>Description</th>
                 <th>Actions</th>
             </tr>
             {{#each doc}}
             <tr>
-                <th colspan="4">{{category}}</th>
+                <th colspan="4">{{category_id}}</th>
             </tr>
             {{#each meals}}
             <tr>
                 <td>{{name}}</td>
-                <td>{{calories}}</td>
                 <td>{{price}}</td>
+                <td>{{calories}}</td>
+                <td>{{weight}}</td>
+                <td>{{description}}</td>
                 <td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
             </tr>
             {{/each}}

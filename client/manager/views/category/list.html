@@ -1,7 +1,7 @@
 <template name="managerCategoryList">
     {{#if categories}}
     {{#each categories}}
-    <option>{{name}}</option>
+    <option value = "{{name}}">{{name}}</option>
     {{/each}}
     {{else}}
     <option>You need to add category first</option>
