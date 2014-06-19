@@ -19,7 +19,7 @@
             </tr>
             {{#each doc}}
             <tr>
-                <th colspan="4">{{category_id}}</th>
+                <th colspan="4">{{category}}</th>
             </tr>
             {{#each meals}}
             <tr>
@@ -28,7 +28,7 @@
                 <td>{{calories}}</td>
                 <td>{{weight}}</td>
                 <td>{{description}}</td>
-                <td><a href="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+                <td><a href="{{pathFor 'managerMealUpdateLayout'}}" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
             </tr>
             {{/each}}
             {{/each}}

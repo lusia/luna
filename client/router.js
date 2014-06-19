@@ -20,11 +20,16 @@ Router.map(function () {
 		layoutTemplate: "layout"
 	});
 	this.route("managerMealUpdateLayout", {
-		path: "/update-meal",
+		path: "/update-meal/:_id",
 		template: 'managerMealUpdateLayout',
 		layoutTemplate: "layout",
-		data : {
-
+		data: function () {
+			Session.set('currentMealId', this.params._id);
+//			templateData = { meal: Meals.findOne({_id: this.params._id}) };
+//			console.log(templateData);
+//			return templateData;
 		}
+
 	});
 });
+

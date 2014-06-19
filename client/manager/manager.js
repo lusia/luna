@@ -3,11 +3,22 @@ $(".warningLabel").hide();
 Meteor.subscribe("meals");
 Meteor.subscribe("categories");
 
+/**
+ * Get all meals from collection
+ */
 var getMeals = function () {
 	return Meals.find().fetch();
 };
+
+/**
+ * Get all categories from collection
+ */
 var getCategories = function () {
 	return Categories.find().fetch();
+};
+
+var findCategoryName = function (id) {
+	return Categories.findOne({_id: id});
 };
 
 /**
@@ -23,7 +34,7 @@ var groupMeals = function (fn) {
 
 	for (var category_id in mgbc) {
 		categoryName = Categories.findOne({_id: category_id}); //find the name of category
-		mealsList.push({'category_id': categoryName.name, 'meals': mgbc[category_id]});
+		mealsList.push({'category': categoryName.name, 'meals': mgbc[category_id]});
 	}
 
 	return mealsList;
@@ -36,7 +47,7 @@ Template.managerMealList.doc = function () {
 };
 Template.managerCategoryList.categories = function () {
 	var categoryList = getCategories(),
-		sortedCategory = _.sortBy(categoryList, function (category) {
+		sortedCategory = _.sortBy(categoryList, function (category) { //sort categories
 
 			return category.name;
 		});
@@ -44,6 +55,9 @@ Template.managerCategoryList.categories = function () {
 	return sortedCategory;
 };
 
+/**
+ * Hooks for 'add category' form
+ */
 AutoForm.hooks({
 	insertCategoryForm: {
 		onError: function (insert, error, template) {
@@ -56,6 +70,24 @@ AutoForm.hooks({
 	}
 });
 
+
+Template.managerMealUpdate.editingDoc = function () {
+
+
+	var meal = Meals.findOne({_id: Session.get("currentMealId")})
+
+	console.log(meal);
+//	var categoryName = findCategoryName(meal['category_id']);
+
+
+//	console.log('see', categoryName);
+	return meal;
+};
+
+
+/**
+ * Hooks for 'add meal' form
+ */
 AutoForm.hooks({
 	insertMealForm: {
 		before: {
