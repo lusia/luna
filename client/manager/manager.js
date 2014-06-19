@@ -17,6 +17,10 @@ var getCategories = function () {
 	return Categories.find().fetch();
 };
 
+/**
+ * Find category by id
+ * @param id
+ */
 var findCategoryName = function (id) {
 	return Categories.findOne({_id: id});
 };
@@ -70,17 +74,17 @@ AutoForm.hooks({
 	}
 });
 
-
+/**
+ * Get meal to update
+ */
 Template.managerMealUpdate.editingDoc = function () {
+	var meal = Meals.findOne({_id: Session.get("currentMealId")});
 
+	if (meal) {
+		var categoryName = findCategoryName(meal['category_id']);
+		meal['category_id'] = categoryName.name; //replace field from category_id to category name
+	}
 
-	var meal = Meals.findOne({_id: Session.get("currentMealId")})
-
-	console.log(meal);
-//	var categoryName = findCategoryName(meal['category_id']);
-
-
-//	console.log('see', categoryName);
 	return meal;
 };
 
