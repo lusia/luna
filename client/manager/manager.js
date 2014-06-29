@@ -22,7 +22,8 @@ var getCategories = function () {
  * @param id
  */
 var findCategoryName = function (id) {
-	return Categories.findOne({_id: id});
+	var category = Categories.findOne({_id: id});
+	return category;
 };
 
 /**
@@ -37,7 +38,7 @@ var groupMeals = function (fn) {
 		categoryName;
 
 	for (var category_id in mgbc) {
-		categoryName = Categories.findOne({_id: category_id}); //find the name of category
+		categoryName = findCategoryName(category_id);
 		mealsList.push({'category': categoryName.name, 'meals': mgbc[category_id]});
 	}
 
@@ -60,6 +61,42 @@ Template.managerCategoryList.categories = function () {
 };
 
 /**
+ * Get meal to update
+ */
+Template.managerMealUpdate.editingDoc = function () {
+	var meal = Meals.findOne({_id: Session.get("currentMealId")});
+
+	return meal;
+};
+
+// Hooks //
+
+/**
+ * Hooks for 'add meal' form
+ */
+AutoForm.hooks({
+	insertMealForm: {
+		before: {
+			//Replace category name by category id
+			insert: function (doc) {
+				var categoryId = Categories.findOne({name: doc.category_id});
+				doc.category_id = categoryId._id;
+				console.log('doc po zmienia', doc);
+				return doc;
+			}
+		},
+		onError: function (insert, error, template) {
+			console.log('error', error);
+			console.log('insert', insert);
+			console.log('templ', template);
+		},
+		onSuccess: function () {
+			Router.go('managerMealList');
+		}
+	}
+});
+
+/**
  * Hooks for 'add category' form
  */
 AutoForm.hooks({
@@ -68,47 +105,25 @@ AutoForm.hooks({
 			console.log('error', error);
 			console.log('err templ', template);
 		},
-		onSuccess: function (operation, result, template) {
+		onSuccess: function () {
 			Router.go('managerMealList');
 		}
 	}
 });
 
-/**
- * Get meal to update
- */
-Template.managerMealUpdate.editingDoc = function () {
-	var meal = Meals.findOne({_id: Session.get("currentMealId")});
-
-	if (meal) {
-		var categoryName = findCategoryName(meal['category_id']);
-		meal['category_id'] = categoryName.name; //replace field from category_id to category name
-	}
-
-	return meal;
-};
-
-
-/**
- * Hooks for 'add meal' form
- */
 AutoForm.hooks({
-	insertMealForm: {
+	updateMealForm: {
 		before: {
-			//Modified doc before insert it
-			insert: function (doc, template) {
-				var categoryId = Categories.findOne({name: doc.category_id});
-				doc.category_id = categoryId._id;
+			//Replace category name by category id in updated doc
+			update: function (docId, modifier) {
+				var catName = modifier.$set.category_id,
+					categoryId = Categories.findOne({name: catName});
+				modifier.$set.category_id = categoryId._id;
 
-				return doc;
+				return modifier;
 			}
 		},
-		onError: function (insert, error, template) {
-			console.log('error', error);
-		},
-		onSuccess: function (operation, result, template) {
-			//console.log($("#category").val());
-
+		onSuccess: function () {
 			Router.go('managerMealList');
 		}
 	}

@@ -25,9 +25,6 @@ Router.map(function () {
 		layoutTemplate: "layout",
 		data: function () {
 			Session.set('currentMealId', this.params._id);
-//			templateData = { meal: Meals.findOne({_id: this.params._id}) };
-//			console.log(templateData);
-//			return templateData;
 		}
 
 	});

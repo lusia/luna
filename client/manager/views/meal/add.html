@@ -1,5 +1,5 @@
 <template name="managerMealAdd">
-    {{#autoForm collection="Meals" id="insertMealForm" type="insert" validation='submit' meteormethod = "addMeal"}}
+    {{#autoForm collection="Meals" id="insertMealForm" type="insert" validation='submit'}}
     <fieldset>
 
         {{> afQuickField name='name'}}
@@ -13,6 +13,6 @@
         {{> managerCategoryList}}
         {{/afFieldSelect}}
     </fieldset>
-    <button id="addMealButton" type="submit" class="btn btn-primary">Submit</button>
+    <button id="addMealButton" type="submit" class="btn btn-primary mealButton">Submit</button>
     {{/autoForm}}
 </template>

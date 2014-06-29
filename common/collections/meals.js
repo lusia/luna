@@ -14,20 +14,20 @@ Meals = new Meteor.Collection("meals", {
 		calories: {
 			type: Number,
 			label: "Calories",
-			optional : true
+			optional: true
 		},
 		category_id: {
 			type: String,
 			label: "Category"
 		},
-		description : {
-			type : String,
-			label : "Description"
+		description: {
+			type: String,
+			label: "Description"
 		},
-		weight : {
-			type : Number,
-			label : "Weight",
-			optional : true
+		weight: {
+			type: Number,
+			label: "Weight",
+			optional: true
 		}
 	}
 });

@@ -1,4 +1,18 @@
 <template name="managerMealUpdate">
-    {{> quickForm collection="Meals" doc=editingDoc  id="updateMealForm" type="update"}}
+    {{#autoForm collection="Meals" doc=editingDoc id="updateMealForm" type="update"}}
+    <fieldset>
 
+        {{> afQuickField name='name'}}
+        {{> afQuickField name='price' class='price'}}
+        {{> afQuickField name='calories'}}
+        {{> afQuickField name='description' rows=2 class='description'}}
+        {{> afQuickField name='weight'}}
+        {{> afFieldLabel name='category_id'}}
+
+        {{#afFieldSelect name="category_id" id='category'}}
+        {{> managerCategoryList}}
+        {{/afFieldSelect}}
+    </fieldset>
+    <button id="updateMealButton" type="submit" class="btn btn-primary mealButton">Submit</button>
+    {{/autoForm}}
 </template>
