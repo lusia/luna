@@ -3,24 +3,29 @@
   display: none;
 }
 
-/* line 6, ../sass/manager.scss */
-.manager #mealsList {
-  border-collapse: separate;
-  border-spacing: 8px;
+/* line 5, ../sass/manager.scss */
+.manager {
+  text-align: justify;
 }
-/* line 11, ../sass/manager.scss */
+/* line 7, ../sass/manager.scss */
+.manager .categoryInMenu {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/* line 13, ../sass/manager.scss */
 .manager .buttonsBlockInMealList {
   margin-bottom: 10px;
 }
-/* line 14, ../sass/manager.scss */
+/* line 16, ../sass/manager.scss */
 .manager .mealButton {
   margin-top: 10px;
 }
-/* line 17, ../sass/manager.scss */
+/* line 19, ../sass/manager.scss */
 .manager #linkToAddCategory {
   margin: 0 0 10px 940px;
 }
-/* line 20, ../sass/manager.scss */
+/* line 22, ../sass/manager.scss */
 .manager .description {
   resize: none;
 }

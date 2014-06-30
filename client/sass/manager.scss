@@ -3,9 +3,11 @@
 }
 
 .manager {
-  #mealsList {
-    border-collapse: separate;
-    border-spacing: 8px;
+  text-align: justify;
+  .categoryInMenu {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 
   .buttonsBlockInMealList {
@@ -20,4 +22,5 @@
   .description {
     resize: none;
   }
+
 }
