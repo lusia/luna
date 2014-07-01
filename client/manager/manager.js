@@ -17,6 +17,8 @@ var getCategories = function () {
 	return Categories.find().fetch();
 };
 
+
+
 /**
  * Find category by id
  * @param id
@@ -79,9 +81,10 @@ AutoForm.hooks({
 		before: {
 			//Replace category name by category id
 			insert: function (doc) {
+
 				var categoryId = Categories.findOne({name: doc.category_id});
 				doc.category_id = categoryId._id;
-				console.log('doc po zmienia', doc);
+
 				return doc;
 			}
 		},
@@ -106,11 +109,14 @@ AutoForm.hooks({
 			console.log('err templ', template);
 		},
 		onSuccess: function () {
-			Router.go('managerMealList');
+			Router.go('managerMealLayout');
 		}
 	}
 });
 
+/**
+ * Hooks for 'update meal' form
+ */
 AutoForm.hooks({
 	updateMealForm: {
 		before: {

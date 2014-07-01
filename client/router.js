@@ -26,7 +26,5 @@ Router.map(function () {
 		data: function () {
 			Session.set('currentMealId', this.params._id);
 		}
-
 	});
 });
-

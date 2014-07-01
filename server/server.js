@@ -1,3 +1,8 @@
+Meteor.startup(function () {
+
+});
+
+
 //Set which documents will be published to the client
 
 Meteor.publish("meals", function () {
@@ -6,4 +11,6 @@ Meteor.publish("meals", function () {
 Meteor.publish("categories", function () {
 	return Categories.find();
 });
-
+Meteor.publish("units", function () {
+	return Units.find();
+});

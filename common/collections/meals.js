@@ -8,13 +8,21 @@ Meals = new Meteor.Collection("meals", {
 			unique: true
 		},
 		price: {
-			type: String,
-			label: "Price"
+			type: Number,
+			label: function () {
+				var unit = unitConfigure();
+
+				return "Price " + "[" + unit.price.unit + "]";
+			}
 		},
 		calories: {
 			type: Number,
-			label: "Calories",
-			optional: true
+			optional: true,
+			label: function () {
+				var unit = unitConfigure();
+
+				return "Calories " + "[" + unit.calories.unit + "]";
+			}
 		},
 		category_id: {
 			type: String,
@@ -26,8 +34,12 @@ Meals = new Meteor.Collection("meals", {
 		},
 		weight: {
 			type: Number,
-			label: "Weight",
-			optional: true
+			optional: true,
+			label: function () {
+				var unit = unitConfigure();
+
+				return "Weight " + "[" + unit.weight.unit + "]";
+			}
 		}
 	}
 });
