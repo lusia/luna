@@ -18,7 +18,6 @@ var getCategories = function () {
 };
 
 
-
 /**
  * Find category by id
  * @param id
@@ -81,9 +80,10 @@ AutoForm.hooks({
 		before: {
 			//Replace category name by category id
 			insert: function (doc) {
-
-				var categoryId = Categories.findOne({name: doc.category_id});
+				var price = doc.price,
+					categoryId = Categories.findOne({name: doc.category_id});
 				doc.category_id = categoryId._id;
+				doc.price = parseFloat(price);
 
 				return doc;
 			}

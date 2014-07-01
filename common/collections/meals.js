@@ -9,6 +9,7 @@ Meals = new Meteor.Collection("meals", {
 		},
 		price: {
 			type: Number,
+			decimal : true,
 			label: function () {
 				var unit = unitConfigure();
 
