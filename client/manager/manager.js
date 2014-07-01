@@ -65,7 +65,16 @@ Template.managerCategoryList.categories = function () {
  * Get meal to update
  */
 Template.managerMealUpdate.editingDoc = function () {
-	var meal = Meals.findOne({_id: Session.get("currentMealId")});
+	var meal = Meals.findOne({_id: Session.get("currentMealIdToUpdate")});
+
+	return meal;
+};
+
+/**
+ * Get meal to remove it from db
+ */
+Template.managerMealDelete.editingDoc = function () {
+	var meal = Meals.findOne({_id: Session.get("currentMealIdToDelete")});
 
 	return meal;
 };
@@ -78,7 +87,7 @@ Template.managerMealUpdate.editingDoc = function () {
 AutoForm.hooks({
 	insertMealForm: {
 		before: {
-			//Replace category name by category id
+			//Replace category name by category id and make conversion to floating-point number
 			insert: function (doc) {
 				var price = doc.price,
 					categoryId = Categories.findOne({name: doc.category_id});

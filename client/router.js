@@ -24,7 +24,15 @@ Router.map(function () {
 		template: 'managerMealUpdateLayout',
 		layoutTemplate: "layout",
 		data: function () {
-			Session.set('currentMealId', this.params._id);
+			Session.set('currentMealIdToUpdate', this.params._id);
+		}
+	});
+	this.route("managerMealDelete", {
+		path: "/delete-meal/:_id",
+		template: 'managerMealDelete',
+		layoutTemplate: "layout",
+		data: function () {
+			Session.set('currentMealIdToDelete', this.params._id);
 		}
 	});
 });

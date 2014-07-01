@@ -22,10 +22,14 @@
   margin-top: 10px;
 }
 /* line 19, ../sass/manager.scss */
+.manager .cancelLink {
+  margin-top: 10px;
+}
+/* line 22, ../sass/manager.scss */
 .manager #linkToAddCategory {
   margin: 0 0 10px 940px;
 }
-/* line 22, ../sass/manager.scss */
+/* line 25, ../sass/manager.scss */
 .manager .description {
   resize: none;
 }

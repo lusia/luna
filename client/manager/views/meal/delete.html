@@ -1,0 +1,18 @@
+<template name="managerMealDelete">
+    <ol class="breadcrumb">
+        <li><a href="{{pathFor 'main'}}">Home</a></li>
+        <li><a href="{{pathFor 'managerMealList'}}">Meals List</a></li>
+        <li class="active">Delete Meal</li>
+    </ol>
+    <div class="well well-sm">
+        <h2>Delete Meal</h2>
+
+        <div class="alert alert-danger" role="alert">
+            Are you sure you want to delete <strong>{{editingDoc.name}} </strong>meal from the menu. This operation will
+            be irreversible.
+        </div>
+        {{> afDeleteButton buttonContent="DELETE" collection="Meals" doc=editingDoc}}
+        <a class="btn btn-warning cancelLink" href="{{pathFor 'managerMealList'}}">Cancel</a>
+
+    </div>
+</template>
