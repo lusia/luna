@@ -8,10 +8,14 @@
         <h2>Delete Meal</h2>
 
         <div class="alert alert-danger" role="alert">
-            Are you sure you want to delete <strong>{{editingDoc.name}} </strong>meal from the menu. This operation will
-            be irreversible.
+            Are you sure you want to delete <strong>{{deletingDoc.name}} </strong>meal from the menu. This operation
+            will be irreversible.
         </div>
-        {{> afDeleteButton buttonContent="DELETE" collection="Meals" doc=editingDoc}}
+
+        {{#autoForm collection='Meals' id="deleteMealForm" doc=deletingDoc type="remove"}}
+        <button type="submit" class="btn btn-primary">Delete</button>
+        {{/autoForm}}
+
         <a class="btn btn-warning cancelLink" href="{{pathFor 'managerMealList'}}">Cancel</a>
 
     </div>

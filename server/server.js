@@ -14,3 +14,13 @@ Meteor.publish("categories", function () {
 Meteor.publish("units", function () {
 	return Units.find();
 });
+
+
+/**
+ * Allow user to delete doc from db
+ */
+Meals.allow({
+	remove: function () {
+		return true;
+	}
+});

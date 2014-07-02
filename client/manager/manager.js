@@ -73,7 +73,8 @@ Template.managerMealUpdate.editingDoc = function () {
 /**
  * Get meal to remove it from db
  */
-Template.managerMealDelete.editingDoc = function () {
+Template.managerMealDelete.deletingDoc = function () {
+
 	var meal = Meals.findOne({_id: Session.get("currentMealIdToDelete")});
 
 	return meal;
@@ -113,10 +114,6 @@ AutoForm.hooks({
  */
 AutoForm.hooks({
 	insertCategoryForm: {
-		onError: function (insert, error, template) {
-			console.log('error', error);
-			console.log('err templ', template);
-		},
 		onSuccess: function () {
 			Router.go('managerMealLayout');
 		}
@@ -139,6 +136,20 @@ AutoForm.hooks({
 			}
 		},
 		onSuccess: function () {
+			Router.go('managerMealList');
+		}
+	}
+});
+
+AutoForm.hooks({
+	deleteMealForm: {
+		before: {
+			remove: function (docId, template) {
+//				return confirm("Are you sure you want to remove this document ?");
+
+			}
+		},
+		onSuccess: function (operation, result, template) {
 			Router.go('managerMealList');
 		}
 	}
