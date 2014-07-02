@@ -2,6 +2,24 @@ Meteor.startup(function () {
 
 });
 
+/**
+ * Allow user to make inserting, deleting and removing documents in the collections
+ */
+_.each([Meals, Categories], function (collection) {
+	collection.allow({
+		insert: function() {
+			return true;
+		},
+		update: function() {
+			return true;
+		},
+		remove: function() {
+			return true;
+		},
+		fetch: []
+	});
+});
+
 
 //Set which documents will be published to the client
 
@@ -11,16 +29,6 @@ Meteor.publish("meals", function () {
 Meteor.publish("categories", function () {
 	return Categories.find();
 });
-Meteor.publish("units", function () {
-	return Units.find();
-});
 
 
-/**
- * Allow user to delete doc from db
- */
-Meals.allow({
-	remove: function () {
-		return true;
-	}
-});
+
