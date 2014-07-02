@@ -1,0 +1,10 @@
+<template name="managerCategoryUpdate">
+    <!--{{> quickForm collection="Categories" doc="editingDoc" id="updateCategoryForm" type="update"}}-->
+
+    {{#autoForm collection='Categories' id="updateCategoryForm" doc=editingDoc type="update"}}
+    {{> afQuickField name='name'}}
+    <button type="submit" class="btn btn-primary mealButton">Submit</button>
+    {{/autoForm}}
+    <a class="btn btn-warning cancelLink" href="{{pathFor 'managerCategoryTable'}}">Cancel</a>
+</template>
+

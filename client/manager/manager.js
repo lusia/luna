@@ -61,6 +61,21 @@ Template.managerCategoryList.categories = function () {
 	return sortedCategory;
 };
 
+Template.managerCategoryTable.categories = function () {
+	var categoryList = getCategories(),
+		sortedCategory = _.sortBy(categoryList, function (category) { //sort categories
+
+			return category.name;
+		});
+
+	for (var i = 0; i < sortedCategory.length; i++) {
+		sortedCategory[i].index = i + 1;
+	}
+
+	return sortedCategory;
+};
+
+
 /**
  * Get meal to update
  */
@@ -74,10 +89,18 @@ Template.managerMealUpdate.editingDoc = function () {
  * Get meal to remove it from db
  */
 Template.managerMealDelete.deletingDoc = function () {
-
 	var meal = Meals.findOne({_id: Session.get("currentMealIdToDelete")});
 
 	return meal;
+};
+
+/**
+ * Get category to update
+ */
+Template.managerCategoryUpdate.editingDoc = function () {
+	var category = Categories.findOne({_id: Session.get("currentCategoryIdToUpdate")});
+
+	return category;
 };
 
 // Hooks //
@@ -121,6 +144,17 @@ AutoForm.hooks({
 });
 
 /**
+ * Hooks for updating category
+ */
+AutoForm.hooks({
+	updateCategoryForm: {
+		onSuccess: function () {
+			Router.go('managerCategoryTable');
+		}
+	}
+});
+
+/**
  * Hooks for 'update meal' form
  */
 AutoForm.hooks({
@@ -141,6 +175,9 @@ AutoForm.hooks({
 	}
 });
 
+/**
+ * Hooks for remove meal from db
+ */
 AutoForm.hooks({
 	deleteMealForm: {
 		before: {

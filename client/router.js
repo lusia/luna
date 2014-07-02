@@ -35,4 +35,17 @@ Router.map(function () {
 			Session.set('currentMealIdToDelete', this.params._id);
 		}
 	});
+	this.route("managerCategoryTable", {
+		path: "/categories-table",
+		template: 'managerCategoryTable',
+		layoutTemplate: "layout"
+	});
+	this.route("managerCategoryUpdateLayout", {
+		path: "/update-category/:_id",
+		template: 'managerCategoryUpdateLayout',
+		layoutTemplate: "layout",
+		data: function () {
+			Session.set('currentCategoryIdToUpdate', this.params._id);
+		}
+	});
 });

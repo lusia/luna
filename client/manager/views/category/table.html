@@ -1,0 +1,32 @@
+<template name="managerCategoryTable">
+    <ol class="breadcrumb">
+        <li><a href="{{pathFor 'main'}}">Home</a></li>
+        <li class="active">Category List</li>
+    </ol>
+    <div class="buttonsBlock">
+        <a class="btn btn-primary" href="{{pathFor 'managerCategoryLayout'}}">Add new category</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {{#each categories}}
+        <tr>
+            <td>{{index}}</td>
+            <td>{{name}}</td>
+            <td>
+                <a href="#" class="btn btn-danger btn-xs">Delete</a>
+                <a href="{{pathFor 'managerCategoryUpdateLayout'}}" class="btn btn-primary btn-xs">Edit</a>
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</template>
